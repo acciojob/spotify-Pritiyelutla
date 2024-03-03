@@ -10,7 +10,7 @@ public class SpotifyRepository {
     public HashMap<Album, List<Song>> albumSongMap;
     public HashMap<Playlist, List<Song>> playlistSongMap; 
     public HashMap<Playlist, List<User>> playlistListenerMap;
-    public HashMap<User, Playlist> creatorPlaylistMap; // why this i am not getting below we already have list
+    public HashMap<User, Playlist> creatorPlaylistMap;
     public HashMap<User, List<Playlist>> userPlaylistMap;
     public HashMap<Song, List<User>> songLikeMap;
 
@@ -104,6 +104,8 @@ public class SpotifyRepository {
 
         Playlist playlist = new Playlist(title);
         playlists.add(playlist);
+        playlistListenerMap.put(playlist,new ArrayList<User>());
+        playlistListenerMap.get(playlist).add(userX);
         List<Playlist> userPlaylist = userPlaylistMap.get(userX);
         userPlaylist.add(playlist);
 
@@ -134,9 +136,11 @@ public class SpotifyRepository {
 
         Playlist playlist = new Playlist(title);
         playlists.add(playlist);
+        playlistListenerMap.put(playlist,new ArrayList<User>());
+        playlistListenerMap.get(playlist).add(userX);
         List<Playlist> userPlaylist = userPlaylistMap.get(userX);
         userPlaylist.add(playlist);
-        // start from here below \/
+
         List<Song> playlistSongs = new ArrayList<Song>();
 
         // Get all songs of length
