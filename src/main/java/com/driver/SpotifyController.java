@@ -16,8 +16,7 @@ public class SpotifyController {
         //create the user with given name and number
         spotifyService.createUser(name,mobile);
         return "Success";
-    } //nikhil u want to run here this or that apllication this one ok i
-
+    }
     @PostMapping("/add-artist")
     public String createArtist(@RequestParam(name = "name") String name){
         //create the artist with given name
