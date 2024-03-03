@@ -22,16 +22,16 @@ public class SpotifyService {
     }
 
     public Album createAlbum(String title, String artistName) {
-        Album album = spotifyRepoitory.createAlbum(title,artistName);
+        Album album = spotifyRepository.createAlbum(title,artistName);
         return album;
     }
 
     public Song createSong(String title, String albumName, int length) throws Exception {
-        return spotifyRepoitory.createSong(title,albumName,length);
+        return spotifyRepository.createSong(title,albumName,length);
     }
 
     public Playlist createPlaylistOnLength(String mobile, String title, int length) throws Exception {
-         return spotifyRepoitory.createPlaylistOnLength(mobile,title,length); 
+         return spotifyRepository.createPlaylistOnLength(mobile,title,length);
     }
 
     public Playlist createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception {
@@ -39,18 +39,18 @@ public class SpotifyService {
     }
 
     public Playlist findPlaylist(String mobile, String playlistTitle) throws Exception {
-          return spotifyRepoitory.findPlaylist(mobile, playlistTitle);
+          return spotifyRepository.findPlaylist(mobile, playlistTitle);
     }
 
     public Song likeSong(String mobile, String songTitle) throws Exception {
-        return spotifyRepoitory.likeSong(mobile, setTitle);
+        return spotifyRepository.likeSong(mobile, songTitle);
     }
 
     public String mostPopularArtist() {
-        return spotifyRepoitory.mostPopularArtist();
+        return spotifyRepository.mostPopularArtist();
     }
 
     public String mostPopularSong() {
-        return spotifyRepoitory.mostPopularSong();
+        return spotifyRepository.mostPopularSong();
     }
 }

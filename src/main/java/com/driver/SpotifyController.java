@@ -16,7 +16,7 @@ public class SpotifyController {
         //create the user with given name and number
         spotifyService.createUser(name,mobile);
         return "Success";
-    }
+    } //nikhil u want to run here this or that apllication this one ok i
 
     @PostMapping("/add-artist")
     public String createArtist(@RequestParam(name = "name") String name){
@@ -24,7 +24,6 @@ public class SpotifyController {
         spotifyService.createArtist(name);
         return "Success";
     }
-
     @PostMapping("/add-album")
     public String createAlbum(@RequestParam(name = "title") String title, String artistName){
         //If the artist does not exist, first create an artist with given name
@@ -37,7 +36,7 @@ public class SpotifyController {
     public String createSong(String title, String albumName, int length) throws Exception{
         //If the album does not exist in database, throw "Album does not exist" exception
         //Create and add the song to respective album
-
+        spotifyService.createSong(title,albumName,length);
         return "Success";
     }
 
@@ -46,7 +45,7 @@ public class SpotifyController {
         //Create a playlist with given title and add all songs having the given length in the database to that playlist
         //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
-
+        spotifyService.createPlaylistOnLength(mobile,title,length);
         return "Success";
     }
 
@@ -55,19 +54,19 @@ public class SpotifyController {
         //Create a playlist with given title and add all songs having the given titles in the database to that playlist
         //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
-
+        spotifyService.createPlaylistOnName(mobile,title,songTitles);
         return "Success";
     }
 
     @PutMapping("/find-playlist")
-    public String findPlaylist(String mobile, String playlistTitle) throws Exception{
+    public Playlist findPlaylist(String mobile, String playlistTitle) throws Exception{
         //Find the playlist with given title and add user as listener of that playlist and update user accordingly
         //If the user is creater or already a listener, do nothing
         //If the user does not exist, throw "User does not exist" exception
         //If the playlist does not exists, throw "Playlist does not exist" exception
         // Return the playlist after updating
+        return spotifyService.findPlaylist(mobile,playlistTitle);
 
-        return "Success";
     }
 
     @PutMapping("/like-song")
@@ -78,19 +77,20 @@ public class SpotifyController {
         //If the user does not exist, throw "User does not exist" exception
         //If the song does not exist, throw "Song does not exist" exception
         //Return the song after updating
-
+        spotifyService.likeSong(mobile,songTitle);
         return "Success";
     }
 
     @GetMapping("/popular-artist")
     public String mostPopularArtist(){
         //Return the artist name with maximum likes
-
+        return spotifyService.mostPopularArtist();
     }
 
     @GetMapping("/popular-song")
     public String mostPopularSong(){
         //return the song title with maximum likes
+        return spotifyService.mostPopularSong();
 
     }
 }
