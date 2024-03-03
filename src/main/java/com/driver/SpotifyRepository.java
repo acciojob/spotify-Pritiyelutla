@@ -80,10 +80,11 @@ public class SpotifyRepository {
                 Song song = new Song(title,length);
                 albumSongMap.get(alb).add(song);
                 songLikeMap.put(song,new ArrayList<User>());
+                songs.add(song);
                 return song;
             }
         }
-        throw new Exception("Album not found"); //hello dinner karo ho gaya so fast y itdid u fixed it just 1 error ``1 type
+        throw new Exception("Album does not exist");
     }
 
     public Playlist createPlaylistOnLength(String mobile, String title, int length) throws Exception {
